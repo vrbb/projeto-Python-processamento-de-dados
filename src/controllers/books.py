@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_restplus import Api, Resource
 
-from src.server.instance import Server
+from src.server.instance import server
 
-app, api = Server.app, Server.api
+app, api = server.app, server.api
 
 books_db = [
     {'id': 0, 'title': 'Alice no país das maravilhas' },
