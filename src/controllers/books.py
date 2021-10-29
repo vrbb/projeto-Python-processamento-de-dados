@@ -18,7 +18,12 @@ class BookList(Resource):
 
 @app.route('/books/<id>', methods=['GET'])
 def book_search(id):
-    resultado = books_db[int(id)]
+    resultBook = {}
+    for book in books_db:
+        if(book['id'] == int(id)):
+            resultBook = book
+            break           
+    resultado = resultBook
     resposta = make_response(jsonify([resultado]),200)
     resposta.headers['Access-Control-Allow-Origin'] = '*'
     return resposta
