@@ -27,3 +27,15 @@ def book_search(id):
     resposta = make_response(jsonify([resultado]),200)
     resposta.headers['Access-Control-Allow-Origin'] = '*'
     return resposta
+
+@app.route('/books/<title>', methods=['GET'])
+def book_search(title):
+    resultBook = {}
+    for book in books_db:
+        if(book['title'] == title):
+            resultBook = book
+            break           
+    resultado = resultBook
+    resposta = make_response(jsonify([resultado]),200)
+    resposta.headers['Access-Control-Allow-Origin'] = '*'
+    return resposta    
